@@ -1,0 +1,69 @@
+.menu {
+   
+    font-size: 20px;
+    font-family: cursive;
+   
+    
+}
+.menu > li { /*子選擇器，只有第一層*/
+    
+    float: left;
+    
+}
+.menu li {
+    
+    
+    
+     margin: 40px;
+    position: relative;
+    padding: 10px;
+   
+   
+   letter-spacing: 1px;
+    width: 115px;
+    list-style-type: none;
+    
+   
+}
+.menu ul {
+    margin: 0;
+    border: white 1px solid; 
+    border-radius: 50px;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    z-index: 20;
+    top: 100%;
+    display:none; /*預設ul不顯示*/
+}
+.menu ul li> ul {/*定義上一層ul li與下一層ul的距離*/
+    z-index: 10;
+    top: 10%;
+    left: 100%;
+}
+.menu a {
+    display: block;
+    padding: 2px;
+    text-decoration: none;
+    text-align: center;
+    background-color: rosybrown;
+    background-size: cover;
+    color: aliceblue;
+}
+.menu a:hover {
+    
+    background-color: rosybrown;
+    background-size: cover;
+    color:wheat;
+}
+.menu li:hover > ul {
+    display: block; 
+    /*移動到li，li下一層的ul才顯示*/
+    
+}
+
+.menu:after{
+    content:"";
+    display: block;
+    clear:both;
+}
