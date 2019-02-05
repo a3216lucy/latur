@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<title>進擊的茶館</title>
+<meta charset="utf-8">
+<style>
+    #header{
+  
+        height: 1000px;
+        width:1500px;
+        background-image: url('works_of_fire__levi_x_reader__modern_au__by_yuyu10100-d8ksyba.jpg');
+        background-repeat: repeat;
+    
+    }
+    
+    .text1{
+        height: 100px;
+        width: ;100;
+        font-size:100px;
+        color: darkcyan;
+        text-align: center;
+        text-shadow: 20px 20px 20px lightblue;
+    }
+    
+    
+    #wrapper{
+        float:left;
+        width:100%;
+    }
+    #main{
+        float:right;
+         margin-left: 180px;
+       
+    }
+     #side{
+        float:left;
+        width:180px;
+         margin-left: -100%;
+        background-color: lightblue;
+    }
+    #footer{
+        clear:both;
+        
+        background-color: lavender;
+    }
+    
+   
+    
+    .text2 {
+    font-style: italic;
+text-decoration: underline;
+    text-decoration-color: antiquewhite;
+    text-align:center;
+    padding: 20px;
+}
+    
+    
+    
+table{
+    border: 3px blue solid;
+    border-collapse:collapse;
+}
+th,td{
+    border: 2px aqua dashed;
+    padding: 5px;
+}
+tr:nth-child(even){
+    background-color: lightgreen;        
+}
+tr:hover{
+    background-color: yellowgreen;    
+}
+    
+    
+dl{
+    width: 150px;
+    background-color: deepskyblue;
+}
+dt:hover,dd:hover {
+    background-color: antiquewhite ;        
+}
+    
+    
+    input{
+    border: 1px blue solid;
+    margin:10px 0;
+            
+}
+input:required{
+    background-color: yellow;
+}
+input:disabled {
+    background-color: lightgray;
+}
+
+input:focus {
+    background-color: azure;
+}
+input[type=button]:hover{
+    background-color: orange;    
+}
+    
+    video,audio,iframe{
+    margin:5px;    
+}
+</style>
+
+<script>
+function getData() {
+    var result="";
+    result += document.getElementsByName('name')[0].value + "<br>";
+    result += document.getElementsByName('pass')[0].value + "<br>";
+    result += document.getElementsByName('birth')[0].value + "<br>";
+    result += document.getElementsByName('email')[0].value + "<br>";
+    result += document.getElementsByName('phone')[0].value + "<br>";
+    result += document.getElementsByName('time')[0].value + "<br>";
+    result += document.getElementsByName('datetime')[0].value + "<br>";
+    result += document.getElementsByName('url')[0].value + "<br>";
+    result += document.getElementsByName('num1')[0].value + "<br>";
+    result += document.getElementsByName('num2')[0].value + "<br>";
+    result += document.getElementsByName('num3')[0].value + "<br>";
+    result += document.getElementsByName('color')[0].value + "<br>";
+    
+     result += document.getElementsByName('textarea')[0].value + "<br>";
+    var gender = document.getElementsByName('gender');
+    result+=gender[0].value + " " + gender[0].checked + "  ";
+    result+=gender[1].value + " " + gender[1].checked + "  ";
+    result+=gender[2].value + " " + gender[2].checked + "  ";
+    result += "<br>";
+    var drink = document.getElementsByName('drink');
+    result+=drink[0].value + " " + drink[0].checked + "  ";
+    result+=drink[1].value + " " + drink[1].checked + "  ";
+    result+=drink[2].value + " " + drink[2].checked + "  ";
+    result += "<br>";
+    result += document.getElementsByName('num1')[0].value + "<br>";
+    var drink = document.getElementsByName('sport');
+    result += drink[0].value + " " + drink[0].checked + "  ";
+    result += drink[1].value + " " + drink[1].checked + "  ";
+    result += drink[2].value + " " + drink[2].checked + "  ";
+    result += "<br>";
+    
+    document.getElementById('result').innerHTML= result;
+}    
+</script>
+
+
+
+
+
+</head>
+<body>
+<div id="header">
+ <p class='text1'>利威爾兵長-茶館</p>
+    </div>
+   
+  
+    
+    <div id="wrapper">
+      <div id="main">
+          <img  src="reader_x_levi___lullaby__sad_ending_2__by_mythiica-d9zn8nl.jpg">
+                </div>
+        </div>
+       <div id="side">
+    <img  src="5270bc17619feef9efb57e3344efcaae.jpg">
+    <section class='text2'>利威爾.阿克曼</section>
+    </div>
+     
+
+
+ <div id="footer">
+
+ 
+<table>
+  <tr>
+    <th>鮮奶系列</th>
+    <th>茶飲系列</th>
+  </tr>
+  <tr>
+    <th>鮮奶系列</th>
+    <th>茶飲系列</th>
+  </tr>
+  <tr>
+    <td>紅茶拿鐵</td>
+    <td>青茶</td>
+  </tr>
+  <tr>
+    <td>歐蕾</td>
+    <td>綠茶</td>
+  </tr>
+  <tr>
+    <td>黑糖撞奶</td>
+    <td>金桔茶</td>
+  </tr>
+  <tr>
+    <td>抹茶漂浮</td>
+    <td>伯爵茶</td>
+  </tr>
+</table>
+  
+
+<dl>
+    <dt>全糖</dt>
+    <dd>正常糖</dd>
+    <dt>少糖</dt>
+    <dd>七分糖</dd>
+    <dt>半糖</dt>
+    <dd>五分糖</dd>
+    <dt>微糖</dt>
+    <dd>三分糖</dd>
+    <dt>無糖</dt>
+    <dd>不加糖</dd>
+</dl>
+
+<form>
+    姓名<input type="text" name="name" required placeholder="王大寶"><br>
+    密碼<input type="password" name="pass"  required><br>
+    生日<input type="date" name="birth"><br>
+    電子郵件<input type="email" name="email"><br>
+    電話<input type="tel" name="phone" value="09xx-xxx-xxx"><br>
+    輸入時間<input type="time" name="time"><br>
+    輸入日期時間<input type="datetime-local" name="datetime"><br>
+    輸入網址<input type="url" name="url"><br>
+    訂購個數(1-10)<input type="number" name="num1" min="1" max="10"><br>
+    訂購個數(2-10，只允許偶數)<input type="number" name="num2" min="2" max="10" step="2"><br>
+    輸入個數1<input type="range" name="num3" min="1" max="10">10<br>
+    顏色<input type="color" name="color"><br>
+    
+    
+    <textarea name="textarea" rows="10" cols="50">請在此輸入意見</textarea><br>
+    <fieldset>
+        <legend>性別</legend>    
+        <input type="radio" name="gender" value="male"> 男 <br>
+        <input type="radio" name="gender" value="female" checked> 女 <br>
+        <input type="radio" name="gender" value="other"> 其他 <br>
+    </fieldset>
+    <fieldset>
+        <legend>飲料</legend>      
+        <input type="radio" name="drink" id="coffee" value="coffee">
+        <label for="coffee"> 咖啡 </label><br>
+        <input type="radio" name="drink" id="tea" value="tea">
+        <label for="tea"> 茶 </label><br>
+        <input type="radio" name="drink" id="water" value="water">
+        <label for="water"> 水 </label><br>
+    </fieldset>
+    訂購個數(1-5)
+    <select name="num1">
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <fieldset>
+        <legend>喜歡的飲料</legend>    
+        <input type="checkbox" name="sport" value="baseball">奶茶類<br>
+        <input type="checkbox" name="sport" value="basketball">氣泡類<br>
+        <input type="checkbox" name="sport" value="football">酒精類<br>
+    </fieldset>
+    
+    <input type="button" onclick="getData()" value="送出">
+    <input type="reset" value="清空表單">
+    <p id="result"></p>
+</form> 
+    <video width="200" height="315" controls></video>
+    <audio controls></audio>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/caquksCVOZA?start=49" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div> 
+</body>
+</html>
