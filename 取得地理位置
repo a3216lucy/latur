@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>geography</title>
+<meta charset="utf-8">
+
+<script>
+    function getLocation()
+    {
+       if(window.navigator.geolocation==undefined)    {
+        alert("Fail to get location!!");
+        return;/*如果失敗取得位置,若成功則執行下列程式*/
+       }
+        
+        navigator.geolocation.getCurrentPosition(
+        successCallback,errorCallback
+        );
+        
+        function successCallback(e)
+        {
+            /*去看成功取得的頁面長怎樣
+            console.log("success!")
+            console.log(typeof(e));
+            
+            for(var x in e.coords)讓物件輸出
+            {
+               document.write(x+":"+e.coords[x]+"<br>");取得coords裡的東西
+                
+            }
+            */
+            document.write(e.coords.longitude+","+e.coords.latitude);/*取得經度及緯度*/
+            
+            /*透過maps.google.cow.tw/?q=25.042944,121.5053824來取得並確定在google中的地圖位置*/
+            
+            var mapUrl="http://maps.google.com.tw/?q="+e.coords.latitude+","+e.coords.longitude;
+            
+            /*接著透過console能看到古狗map的網址完整呈現*/
+            console.log(mapUrl);
+            
+            /*接著將該視窗自動跳轉至該網址*/
+            window.location.assign(mapUrl);
+        }
+        
+        
+        function errorCallback(e)
+        {
+            
+            
+            
+        }
+    } 
+    
+    /*使用者可以使用行動裝置輸入目前位置的名稱,記錄下目前位置,且將紀錄的位置清單列在網頁下方
+    
+    所以開啟網頁時,
+    1.列出使用者曾記錄過的位置
+    2.使用者苦輸入目前位置名稱
+    3.按下送出後,會產生連結至目前地圖位置的超連結
+    3.清單也會即時更新,加入最新連結
+    4.下次開啟時,這些連結都會出現*/
+    </script>
+
+</head>
+<body onload="getLocation()">
+    
+    
+    
+</body>
+
+
+</html>
