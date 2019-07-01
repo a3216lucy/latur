@@ -1,0 +1,23 @@
+.fig{
+    float: left;
+    width: 200px;
+    background-color: lavender(255,220,0,1);
+    margin:5px;
+}
+.fig-title{
+    font-size:20px;
+    padding: 5px;
+    border-left: 10px rosybrown solid;
+}
+.fig-img{
+    border-radius: 500px;
+    margin: 60px;
+    padding: 5px;
+    height: 240px;
+    width: 240px; 
+}
+#fig-wrapper:after{
+    content: "";
+    display: block;
+    clear: both;
+}

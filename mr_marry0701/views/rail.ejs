@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="Zh_tw">
+
+<head>
+<meta charset="UTF-8">
+<title>大學生介面</title>
+<meta charset="utf-8">
+<link href="../stylesheets/site.css" rel="stylesheet" type="text/css">
+<link href="../stylesheets/menu.css" rel="stylesheet" type="text/css">
+<link href="../stylesheets/fig.css" rel="stylesheet" type="text/css">
+<link href="../stylesheets/btn1.css" rel="stylesheet" type="text/css">
+<link href="../stylesheets/go%20home.css" rel="stylesheet" type="text/css">
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<style type="text/css">
+
+         /* Small devices (landscape phones) */
+        
+        @media (min-width: 576px) {
+            body {
+                background: rosybrown;
+            }
+        }
+        /* Medium devices (tablets) */
+        
+        @media (min-width: 768px) {
+            body {
+                background: rosybrown;
+            }
+        }
+        /* Large devices (desktops) */
+        
+        @media (min-width: 992px) {
+            body {
+                background: rosybrown;
+            }
+        }
+        /* Extra large devices (large desktops) */
+        
+        @media (min-width: 1200px) {
+            body {
+                background: rosybrown;
+            }
+        }
+        /* The given screen size or smaller */
+        /* Extra small devices (portrait phones)*/
+        
+        @media (max-width: 575px) {
+            body {
+                background: rosybrown;
+            }
+        }
+
+    
+     
+        </style>
+       
+            
+    
+ <script type="text/javascript" src="iscroll.js"></script>
+  <script type="text/javascript">
+     /* window.onload = function(event) {
+                function offset(element) {
+                    var x = 55;
+                    var y = 45;
+                    while(element) {
+                        x += element.offsetLeft;
+                        y += element.offsetTop;
+                        element = element.offsetParent;
+                    }
+                    return { 
+                        x: x, 
+                        y: y, 
+                        toString: function() {
+                            return '(' + this.x + ', ' + this.y + ')';
+                        }
+                    };
+                }
+                var input = document.getElementById('search');
+                var search = offset(input);
+                var container = document.getElementById('container');
+                container.style.left = search.x + 'px';
+                container.style.top = search.y + input.offsetHeight + 'px';
+                container.style.width = input.offsetWidth + 'px';
+            };  */
+   // function getData(){
+        //XMLHttpRequest物件專門用來跟伺服器做連線
+        //var req=new XMLHttpRequest();
+        //建立一個物件,設定連線的資訊,第一個使用"get"去取得網頁連線的方式
+        //第二個是需要連線的網址
+       //req.open("get","https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/756?$top=30&$format=XML");
+      // req.onload=function(){//利用load事件去確認連線結束並且回傳伺服器的資料
+           //將資料放到我們所設定好的div區塊的content裡面 直接呈現在網頁上
+       // var content=document.getElementById("content");
+       // content.innerHTML=this.responseText;
+        //alert(this.responseText);           
+     //  };
+      // req.send();//最後送出連線,再返回load
+
+
+      function searchURL(){
+          var link = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/Today/TrainNo/"+document.getElementsByTagName("input")[0].value+"?$top=10&$format=JSON" ;
+          
+          
+          //window.location = "https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/" + document.getElementsByTagName("input")[0].value + "?$top=4&$format=JSON" ;
+         var obj;
+          fetch(link)
+              .then(function(response) {
+                  console.log(response);
+                  return response.json();
+              })
+              .then(function(data) {
+              for (i = 0; i < 30; i++) {
+                      obj = data[i];
+                      console.log(obj);
+                  var j=" "; //站牌順序
+                  for (j in obj.StopTimes){
+                      j =obj.StopTimes[j].StopSequence;
+                  }
+                 var x=" "; //站牌名稱
+                  for(x in obj.StopTimes){
+                      x =obj.StopTimes[x].StationName.Zh_tw;
+                  }
+                 var y=" ";  
+                      for(y in obj.StopTimes){
+                      y =obj.StopTimes[y].ArrivalTime;
+                  } 
+                var z=" ";  
+                   for(z in obj.StopTimes){
+                      z =obj.StopTimes[z].DepartureTime;
+                  } 
+                  document.getElementById("output").innerHTML +=  "行駛日期"+obj.TrainDate+"</br>"+
+                      "行駛車號為:"+obj.DailyTrainInfo.TrainNo+"</br>"+
+                      "站牌順序:" +j+"</br>"+
+                      "此站為:"+x+"</br>"+
+                      "抵達時間為:"+y+"</br>"+
+                      "出發時間為:"+z+"</br>"+"</br>"+"最後更新時間為:"+obj.UpdateTime;
+                     
+                      
+                      
+                     
+              }
+              
+           
+                 
+              
+          })
+          
+          
+              .catch(function(err) {
+                  console.log(err);
+              });
+      }
+
+    //   function searchURL(){
+    // fetch("https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/" + document.getElementsByTagName("input")[0].value+"?$format=JSON";)
+    //       .then(function(response){
+    //      return response.json();
+    //     content.innerHTML=this.responseText;
+    // }
+      //var req=new XMLHttpRequest();
+      //    req.open("get","""https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/" + document.getElementsByTagName("input")[0].value;;""");
+     //     req.onload=function(){
+    //   var content=document.getElementById("content");
+     //     content.innerHTML=this.responseText;
+   //       };
+   // req.send();
+      //}
+  /*    var request=xhr();
+      request.onreadystatechange=handleStateChange;
+      request.open('POST', "searchURL();");
+request.setRequestHeader('Content-Type', 'application/json');
+      req.onload=function(){
+      var content =document.getElementById("content");
+          content.innerHTML=this.responseText;
+      };
+     
+request.send(json); */
+  /*
+      function time(){
+          var timeID=setInterval(function(){	
+try{	
+window.opener.parent.document.getElementById("content").value = document.getElementById("searchURL();").value;
+}catch(e){};	
+},100)
+}window.onload=time;
+      }
+     
+      */
+      
+      /*jquery上下滑動框架*/
+      var myScroll,
+	pullDownEl, 
+	pullDownOffset,
+	pullUpEl, 
+	pullUpOffset,
+	generatedCount = 0;
+
+function pullDownAction () {
+	setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+		var el, li, i;
+		el = document.getElementById('thelist');
+
+		for (i=0; i<5; i++) {
+			li = document.createElement('li');
+			li.innerText = 'Generated row ' + (++generatedCount);
+			el.insertBefore(li, el.childNodes[0]);
+		}
+		document.getElementById("pullUp").style.display="";
+		myScroll.refresh();
+	}, 1000);
+}
+
+function pullUpAction () {
+	setTimeout(function () {
+		var el, li, i;
+		el = document.getElementById('thelist');
+
+		for (i=0; i<1; i++) {
+			li = document.createElement('li');
+			li.innerText = 'Generated row ' + (++generatedCount);
+			el.appendChild(li, el.childNodes[0]);
+		}
+		myScroll.refresh();
+	}, 1000);
+}
+
+function loaded() {
+	pullDownEl = document.getElementById('pullDown');
+	pullDownOffset = pullDownEl.offsetHeight;
+	pullUpEl = document.getElementById('pullUp');	
+	pullUpOffset = 10;
+	//pullUpOffset = pullUpEl.offsetHeight;
+	myScroll = new iScroll('wrapper', {
+		useTransition: true,
+		topOffset: pullDownOffset,
+		onRefresh: function () {
+			//that.maxScrollY = that.wrapperH - that.scrollerH + that.minScrollY;
+			//that.minScrollY = -that.options.topOffset || 0;
+			//alert(this.wrapperH);
+			//alert(this.scrollerH);
+			if (pullDownEl.className.match('loading')) {
+				pullDownEl.className = '';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';}
+			if (pullUpEl.className.match('loading')) {
+				pullUpEl.className = '';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+			}
+			
+			document.getElementById("pullUp").style.display="none";
+			document.getElementById("show").innerHTML="onRefresh: up["+pullUpEl.className+"],down["+pullDownEl.className+"],Y["+this.y+"],maxScrollY["+this.maxScrollY+"],minScrollY["+this.minScrollY+"],scrollerH["+this.scrollerH+"],wrapperH["+this.wrapperH+"]";
+		},
+		onScrollMove: function () {
+			document.getElementById("show").innerHTML="onScrollMove: up["+pullUpEl.className+"],down["+pullDownEl.className+"],Y["+this.y+"],maxScrollY["+this.maxScrollY+"],minScrollY["+this.minScrollY+"],scrollerH["+this.scrollerH+"],wrapperH["+this.wrapperH+"]";
+			if (this.y > 0) {
+				pullDownEl.className = 'flip';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';
+				this.minScrollY = 0;
+			}
+			if (this.y < 0 && pullDownEl.className.match('flip')) {
+				pullDownEl.className = '';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
+				this.minScrollY = -pullDownOffset;
+			}
+			
+			if ( this.scrollerH < this.wrapperH && this.y < (this.minScrollY-pullUpOffset) || this.scrollerH > this.wrapperH && this.y < (this.maxScrollY - pullUpOffset) ) {
+				document.getElementById("pullUp").style.display="";
+				pullUpEl.className = 'flip';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+			} 
+			 if (this.scrollerH < this.wrapperH && this.y > (this.minScrollY-pullUpOffset) && pullUpEl.className.match('flip') || this.scrollerH > this.wrapperH && this.y > (this.maxScrollY - pullUpOffset) && pullUpEl.className.match('flip')) {
+				document.getElementById("pullUp").style.display="none";
+				pullUpEl.className = '';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+			}
+		},
+		onScrollEnd: function () {
+			document.getElementById("show").innerHTML="onScrollEnd: up["+pullUpEl.className+"],down["+pullDownEl.className+"],Y["+this.y+"],maxScrollY["+this.maxScrollY+"],minScrollY["+this.minScrollY+"],scrollerH["+this.scrollerH+"],wrapperH["+this.wrapperH+"]";
+			if (pullDownEl.className.match('flip')) {
+				pullDownEl.className = 'loading';
+				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';				
+				pullDownAction();	// Execute custom function (ajax call?)
+			} 
+			 if (pullUpEl.className.match('flip')) {
+				pullUpEl.className = 'loading';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';		
+				pullUpAction();	// Execute custom function (ajax call?)
+			}
+		}
+	});
+	
+	//setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+    </script>
+    
+    
+</head>
+<body>
+ 
+ 
+<div id="all">
+    <header id="header">
+         <div id="fig-wrapper">
+                <section class="fig">
+                    <p class="fig-title"></p>
+                    <img class="fig-img" src="../images/img-ph-001.jpg" >
+                </section>
+            </div>
+    </header>
+    <div id="menu-wrapper">
+        <ul class="menu">
+            <li><a href="#">➤角色管理</a>
+                <ul>
+                    <li><a href="#">服裝設定</a></li>
+                    <li><a href="#">表情設定</a></li>
+                    <li><a href="#">喜好管理➤</a>
+                        <ul>
+                            <li><a href="#"> ♪音樂</a></li>
+                            <li><a href="#">提醒功能</a></li>
+                            <li><a href="#">對話功能</a></li>
+                            <li><a href="#">互動</a></li>
+                            <li><a href="#">解鎖進度</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">➤帳戶設定</a>
+                <ul>
+                    <li><a href="#">連動功能</a></li>
+                    
+                </ul>
+            </li>
+            <li><a href="#">➤更換背景</a>
+                <ul>
+                    <li><a href="#">自訂內容</a></li>
+                    <li><a href="#">選項自訂</a></li>
+                    <li><a href="#">動畫特效</a></li>
+                </ul>
+            </li>
+                    <li><a href="#">➤其他</a></li>
+         </ul>
+         
+    </div>
+    <div id="wrapper">
+        <aside id="aside">
+             <ul class="menu">
+            <li><a href="#">➤選單</a>
+            <ul>
+                <li> <button class="btn1">鬧鐘</button></li>
+                <li> <button class="btn1">天氣</button></li>
+                <li> <button class="btn1">行事曆</button></li>
+                <li><button  class="btn1" onclick="location.href='/bus'" >交通</button></li>             
+                <li> <button class="btn1" onclick="location.href='#'">導航</button></li>
+                <li> <button class="btn1">備忘錄</button></li>
+                <li> <button class="btn1">語音</button></li>
+                <li>  <button class="btn1">記帳</button></li>
+                </ul>
+            </li>
+           
+             <div id="fixed"><a href="/start">回到頁首</a></div>   
+    </div>
+        </aside>
+        <main>
+           <section id="" >
+        <div class="container">請輸入您想搜索的</br>高鐵:
+            <div class="row">
+                <div class="col-md-6 ml-auto">
+                    <div class="input-group">
+                        <input type="text" id="search" class="form-control" placeholder="搜尋高鐵">
+                        <div class="input-group-append">
+                            <button onclick="searchURL()" >搜尋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="output"></div>
+    </section>
+       
+       <div id="content">
+            </div>
+            
+        </main>
+    
+    <footer id="footer">
+        
+         
+    </footer>
+</div>
+</body>
+</html>

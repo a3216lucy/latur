@@ -1,0 +1,20 @@
+.btn1{
+    display:block;
+    border-radius: 40px;
+    height:55px;
+    width:80px;
+    padding: 5px 0;
+    margin:10px;
+    font-size: 24px;
+    background-color: rosybrown;
+    color:white;
+    border: 10px b solid;
+    border-radius: 30px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.btn1:hover{
+    background-color: rosybrown;
+    color:royalblue;
+    cursor: pointer;
+}
