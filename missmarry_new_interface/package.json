@@ -6,11 +6,17 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "browserify": "^16.3.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
+    "ejs-lint": "^0.3.0",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
+    "morgan": "~1.9.0",
+    "node-fetch": "^2.6.0",
+    "window": "^4.2.6"
   }
 }

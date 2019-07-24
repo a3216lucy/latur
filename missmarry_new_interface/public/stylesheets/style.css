@@ -6,11 +6,12 @@ body {
 }
 
 .nav-link{
-  margin-top:15px;
+  padding-top:15px;
   font: 16px 'Noto Sans TC', "微軟正黑體", "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* list-style-type: none;
-  text-decoration: none; */
   color:#93999f;
+}
+.collapse{
+  width:100%;
 }
 .full{
   width:100%;
@@ -20,8 +21,10 @@ body {
   background-color: #ffffff;
 }
 .nav{
-  margin-top: 30px;
-
+  padding-top: 30px;
+}
+.navbar-nav{
+margin-left: 30px;
 }
 .logo{
   /* background-image: url(img/logo.png); */
@@ -32,7 +35,7 @@ body {
   width:150px;
   height:50px;
   /* margin-top:15px; */
-  margin-left: 50px;
+  margin-left: 20px;
 }
 /* #nav ul{
   margin:0;
@@ -66,21 +69,21 @@ body {
   float:left;
   font-size:20px;
   /* padding-left:30px; */
-  margin-left:30px;
+  margin-left:-500px;
 }
 .notification{
   margin-top:30px;
   position:relative;
   float:left;
   font-size:20px;
-  padding-left:30px;
+  /* padding-left:15px; */
 }
 .setting {
   margin-top:30px;
   position:relative;
   float:left;
   font-size:20px;
-  padding-left:30px;
+  /* padding-left:15px; */
 }
 @media screen and (max-width: 768px) {
   
